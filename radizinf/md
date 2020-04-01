@@ -1,0 +1,8 @@
+from tkinter import*
+prozor=Tk()
+prozor.title("Registracija za bolesti i upute.")
+prozor.configure(bg="cyan")
+Label(prozor,text="Upišite sintome:",bg="cyan",fg="black").grid(row=1,column=0,sticky=E)
+unos=Entry(prozor,width=50,bg="white")
+unos.grid(row=2,column=0,sticky=E)
+prozor.mainloop()
