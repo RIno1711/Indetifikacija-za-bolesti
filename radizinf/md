@@ -1,8 +1,116 @@
 from tkinter import*
+#kreiram prozor(konfiguriram ga i dajem mu ime)
 prozor=Tk()
-prozor.title("Registracija za bolesti i upute.")
+prozor.title("Odabir bolesti")
 prozor.configure(bg="cyan")
-Label(prozor,text="Upišite sintome:",bg="cyan",fg="black").grid(row=1,column=0,sticky=E)
-unos=Entry(prozor,width=50,bg="white")
-unos.grid(row=2,column=0,sticky=E)
+#riječnik
+bolesti_i_odgovori = {
+    "Obična prehlada": "Lagana lako preboljiva bolest.","kuga":"Teška akutna infekcija.","tetanus":"Akutna infektivna bolest.","sifilis":"Spolno prenosiva bolest."
+    ,"salmoneloza":"Bakterijska infekcija tankog i debelog crijeva.","šigeloza":"Akutna crijevna infekcija.","SARS":"Teški akutni respiratorni sindrom."
+    ,"mononukleoza":"Zarazna bolest poljubca.","gripa":"Zarazna bolest(najčešće dišni susutav).","HPV":"Spolno prenosiva bolest."
+}
+
+# radim listbox 
+listbox1 = Listbox(prozor,bg="cyan")
+for x, y in enumerate(bolesti_i_odgovori):
+    listbox1.insert(x+1, y)
+listbox1.pack(anchor='w')
+
+#naredba za prvi gumb
+def potvrdi():
+    # poništiti prijašnji unos
+    #porovjeriti bolesti
+    # unest kratak opis 
+    entry1.delete(0, 'end')
+    bolesti = listbox1.get(ANCHOR)
+    entry1.insert(0, bolesti_i_odgovori[bolesti])
+    create_window()
+    pass 
+
+#radim novi prozor
+#stvaram checkboxove za sintome
+def create_window():
+    global prozor
+    novi_prozor1 = Toplevel(prozor)
+    novi_prozor1.title("Simptomi")
+    novi_prozor1.configure(bg="cyan")
+    var1 = IntVar()
+    Checkbutton(novi_prozor1, text="Povećani limfni čvorovi", variable=var1,bg="cyan").grid(row=1, sticky=W)
+    var2 = IntVar()
+    Checkbutton(novi_prozor1, text="Zimica", variable=var2,bg="cyan").grid(row=2, sticky=W)
+    var3 = IntVar()
+    Checkbutton(novi_prozor1, text="Kožne promjene koje ne zacjeljuju", variable=var3,bg="cyan").grid(row=3, sticky=W)
+    var4 = IntVar()
+    Checkbutton(novi_prozor1, text="Crvenkasti osip koji ne svrbi", variable=var4,bg="cyan").grid(row=4, sticky=W)
+    var5 = IntVar()
+    Checkbutton(novi_prozor1, text="Duže vrijeme sa kožnim promjenama koje ne zacjeljuju ", variable=var5,bg="cyan").grid(row=5, sticky=W)
+    var6 = IntVar()
+    Checkbutton(novi_prozor1, text="Ukočenost čeljusti", variable=var6,bg="cyan").grid(row=6, sticky=W)
+    var7 = IntVar()
+    Checkbutton(novi_prozor1, text="Temperatura 39'5 stupnjeva C do 41", variable=var7,bg="cyan").grid(row=7, sticky=W)
+    var8 = IntVar()
+    Checkbutton(novi_prozor1, text="Otežano gutanje", variable=var8,bg="cyan").grid(row=8, sticky=W)
+    var9 = IntVar()
+    Checkbutton(novi_prozor1, text="Nemir", variable=var9,bg="cyan").grid(row=9, sticky=W)
+    var10 = IntVar()
+    Checkbutton(novi_prozor1, text="Iritabilnost", variable=var10,bg="cyan").grid(row=10, sticky=W)
+    var11 = IntVar()
+    Checkbutton(novi_prozor1, text="Grlobolja", variable=var11,bg="cyan").grid(row=11, sticky=W)
+    var12 = IntVar()
+    Checkbutton(novi_prozor1, text="Glavobolja", variable=var12,bg="cyan").grid(row=12, sticky=W)
+    var13 = IntVar()
+    Checkbutton(novi_prozor1, text="Grčenj facijalnih mišića", variable=var13,bg="cyan").grid(row=13, sticky=W)
+    var14 = IntVar()
+    Checkbutton(novi_prozor1, text="Proljev", variable=var14,bg="cyan").grid(row=14, sticky=W)
+    var15 = IntVar()
+    Checkbutton(novi_prozor1, text="Vrućica", variable=var15,bg="cyan").grid(row=15, sticky=W)
+    var16 = IntVar()
+    Checkbutton(novi_prozor1, text="Povraćanje", variable=var16,bg="cyan").grid(row=16, sticky=W)
+    var17 = IntVar()
+    Checkbutton(novi_prozor1, text="Grčevi u trbuhu", variable=var17,bg="cyan").grid(row=17, sticky=W)
+    var18 = IntVar()
+    Checkbutton(novi_prozor1, text="Pospanost", variable=var18,bg="cyan").grid(row=18, sticky=W)
+    var19 = IntVar()
+    Checkbutton(novi_prozor1, text="Anoreksija", variable=var19,bg="cyan").grid(row=19, sticky=W)
+    var20 = IntVar()
+    Checkbutton(novi_prozor1, text="Dehidracija", variable=var20,bg="cyan").grid(row=20, sticky=W)
+    var21 = IntVar()
+    Checkbutton(novi_prozor1, text="Otežano disanje", variable=var21,bg="cyan").grid(row=21, sticky=W)
+    var22 = IntVar()
+    Checkbutton(novi_prozor1, text="Bolovi u mišićima", variable=var22,bg="cyan").grid(row=22, sticky=W)
+    var23 = IntVar()
+    Checkbutton(novi_prozor1, text="Upala sluznice ždrijela", variable=var23,bg="cyan").grid(row=23, sticky=W)
+    var24 = IntVar()
+    Checkbutton(novi_prozor1, text="Gubitak apetita", variable=var24,bg="cyan").grid(row=24, sticky=W)
+    var25 = IntVar()
+    Checkbutton(novi_prozor1, text="Upala grla", variable=var25,bg="cyan").grid(row=25, sticky=W)
+    var26 = IntVar()
+    Checkbutton(novi_prozor1, text="Suhi kašalj", variable=var26,bg="cyan").grid(row=26, sticky=W)
+    var27 = IntVar()
+    Checkbutton(novi_prozor1, text="Začepljen nos", variable=var27,bg="cyan").grid(row=27, sticky=W)
+    var28 = IntVar()
+    Checkbutton(novi_prozor1, text="Bol mišića i zglobova", variable=var28,bg="cyan").grid(row=28, sticky=W)
+    var29 = IntVar()
+    Checkbutton(novi_prozor1, text="Bilo kakve promjene na maternici", variable=var29,bg="cyan").grid(row=29, sticky=W)
+    var30 = IntVar()
+    Checkbutton(novi_prozor1, text="Iscjedak iz nosa", variable=var30,bg="cyan").grid(row=30, sticky=W)
+    var31 = IntVar()
+    Checkbutton(novi_prozor1, text="Osjećaj umora", variable=var31,bg="cyan").grid(row=31, sticky=W)
+    var32 = IntVar()
+    Checkbutton(novi_prozor1, text="Gubitak kose", variable=var32,bg="cyan").grid(row=32, sticky=W)
+    var33 = IntVar()
+    Checkbutton(novi_prozor1, text="Mršavljenje", variable=var33,bg="cyan").grid(row=33, sticky=W)
+    #novi gumb
+
+# dohvatiti opis po bolesti
+button1 = Button(prozor, text="Potvrdi", command=potvrdi,bg="cyan")
+button1.pack()
+
+# napraviti mjesto gdje će ići opis
+label1 = Label(prozor, text="Kratki opis",bg="cyan").pack()
+entry1 = Entry(prozor, width = 50,bg="cyan")
+entry1.pack()
+
 prozor.mainloop()
+
+
