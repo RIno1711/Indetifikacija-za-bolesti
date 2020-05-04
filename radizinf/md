@@ -5,12 +5,26 @@ prozor.title("Odabir bolesti")
 prozor.configure(bg="cyan")
 #riječnik
 bolesti_i_odgovori = {
-    "Obična prehlada": "Lagana lako preboljiva bolest.","kuga":"Teška akutna infekcija.","tetanus":"Akutna infektivna bolest.","sifilis":"Spolno prenosiva bolest."
+    "obična prehlada": "Lagana lako preboljiva bolest.","kuga":"Teška akutna infekcija.","tetanus":"Akutna infektivna bolest.","sifilis":"Spolno prenosiva bolest."
     ,"salmoneloza":"Bakterijska infekcija tankog i debelog crijeva.","šigeloza":"Akutna crijevna infekcija.","SARS":"Teški akutni respiratorni sindrom."
     ,"mononukleoza":"Zarazna bolest poljubca.","gripa":"Zarazna bolest(najčešće dišni susutav).","HPV":"Spolno prenosiva bolest."
 }
 
-# radim listbox 
+#radim riječnik wikipedije
+wikipedija = {
+    "obična prehlada": "link na obična prehlada:https://hr.wikipedia.org/wiki/Obi%C4%8Dna_prehlada#Znakovi_i_simptomi",
+    "kuga": "link na kuga:https://hr.wikipedia.org/wiki/Kuga#Simptomi_i_znaci",
+    "tetanus": "link na tetanus:https://hr.wikipedia.org/wiki/Tetanus#Simptomi_i_znaci",
+    "sifilis": "link na sifilis:https://hr.wikipedia.org/wiki/Sifilis#Znakovi_i_simptomi",
+    "salmoneloza": "link na salmoneloza:https://hr.wikipedia.org/wiki/Salmoneloza",
+    "šigeloza": "link na šigeloza:https://hr.wikipedia.org/wiki/%C5%A0igeloza#Simptomi_i_znaci",
+    "SARS": "link na SARS:https://hr.wikipedia.org/wiki/Te%C5%A1ki_akutni_respiratorni_sindrom#Simptomi",
+    "mononukleoza": "link na mononukleoza:https://hr.wikipedia.org/wiki/Mononukleoza#Simptomi",
+    "gripa": "link na gripa:https://hr.wikipedia.org/wiki/Gripa#Simptomi",
+    "HPV": "link na HPV:https://hr.wikipedia.org/wiki/Humani_papiloma_virus#Manifestacija"
+}
+
+#radim listbox 
 listbox1 = Listbox(prozor,bg="cyan")
 for x, y in enumerate(bolesti_i_odgovori):
     listbox1.insert(x+1, y)
@@ -18,7 +32,7 @@ listbox1.pack(anchor='w')
 
 #naredba za prvi gumb
 def potvrdi():
-    # poništiti prijašnji unos
+    #poništiti prijašnji unos
     #porovjeriti bolesti
     # unest kratak opis 
     entry1.delete(0, 'end')
@@ -28,12 +42,13 @@ def potvrdi():
     pass 
 
 #radim novi prozor
-#stvaram checkboxove za sintome
 def create_window():
     global prozor
     novi_prozor1 = Toplevel(prozor)
     novi_prozor1.title("Simptomi")
     novi_prozor1.configure(bg="cyan")
+
+    #radim checboxove za simptome
     var1 = IntVar()
     Checkbutton(novi_prozor1, text="Povećani limfni čvorovi", variable=var1,bg="cyan").grid(row=1, sticky=W)
     var2 = IntVar()
@@ -91,7 +106,7 @@ def create_window():
     var28 = IntVar()
     Checkbutton(novi_prozor1, text="Bol mišića i zglobova", variable=var28,bg="cyan").grid(row=28, sticky=W)
     var29 = IntVar()
-    Checkbutton(novi_prozor1, text="Bilo kakve promjene na maternici", variable=var29,bg="cyan").grid(row=29, sticky=W)
+    Checkbutton(novi_prozor1, text="Promjene na spolovilu", variable=var29,bg="cyan").grid(row=29, sticky=W)
     var30 = IntVar()
     Checkbutton(novi_prozor1, text="Iscjedak iz nosa", variable=var30,bg="cyan").grid(row=30, sticky=W)
     var31 = IntVar()
@@ -100,17 +115,68 @@ def create_window():
     Checkbutton(novi_prozor1, text="Gubitak kose", variable=var32,bg="cyan").grid(row=32, sticky=W)
     var33 = IntVar()
     Checkbutton(novi_prozor1, text="Mršavljenje", variable=var33,bg="cyan").grid(row=33, sticky=W)
+    
+    #def funkciju pregled za gumb
+    def pregled():
+        if (var1.get() == 1) & (var2.get() == 1) & (var7.get() == 1) :
+            label4=Label(novi_prozor1,text='Imate kugu.',bg="cyan").grid(row=15,column=2)
+        elif (var3.get() == 1) & (var32.get() ==1):
+            label5=Label(novi_prozor1,text='Imate prvi stadij sifilisa.',bg="cyan").grid(row=15,column=2)
+        elif (var4.get() == 1) & (var32.get() == 1) & (var33.get() == 1):
+            label6=Label(novi_prozor1,text='Imate drugi stadij sifilisa',bg="cyan").grid(row=15,column=2)
+        elif (var5.get() == 1) & (var32.get() == 1) & (var33.get() == 1):
+            label7=Label(novi_prozor1,text="Imate treći stadij sifilisa.",bg="cyan").grid(row=15,column=2)
+        elif (var6.get() == 1) & (var8.get() == 1) & (var9.get() == 1) & (var10.get() == 1) & (var11.get() == 1) & (var12.get() == 1) & (var13.get() == 1):
+            label8=Label(novi_prozor1,text="Imate tetanus.")
+        elif (var14.get() == 1) & (var15.get() == 1) & (var16.get() == 1) & (var17.get() == 1):
+            label9=Label(novi_prozor1,text="Imate salmoneluzu.",bg="cyan").grid(row=15,column=2)
+        elif (var18.get() == 1) & (var19.get() == 1) & (var20.get() == 1):
+            label10=Label(novi_prozor1,text="Imate šigelozu.",bg="cyan").grid(row=15,column=2)
+        elif (var21.get() == 1) & (var22.get() == 1) & (var23.get() == 1):
+            label11=Label(novi_prozor1,text="Imate SARS.",bg="cyan").grid(row=15,column=2)
+        elif (var24.get() == 1) & (var25.get() == 1) & (var1.get() == 1):
+            label11=Label(novi_prozor1,text="Imate mononukleozu.",bg="cyan").grid(row=15,column=2)
+        elif (var26.get() == 1) & (var27.get() == 1) & (var28.get() == 1):
+            label12=Label(novi_prozor1,text="Imate gripu.",bg="cyan").grid(row=15,column=2)
+        elif (var29.get() == 1) & (var16.get() == 1):
+            label13=Label(novi_prozor1,text="Imate HPV.",bg="cyan").grid(row=15,column=2)
+        elif (var30.get() == 1) & (var31.get() == 1):
+            label14=Label(novi_prozor1,text="Imate običnu prehladu.",bg="cyan").grid(row=15,column=2)
+        else:
+            label15=Label(novi_prozor1,text="Toga nemamo u bazi podataka.Obratite se centru za infektologiju kako biste registrirali novu bolest.",bg="cyan").grid(row=15,column=2)
+    
     #novi gumb
+    button2=button2 = Button(novi_prozor1, text="Pregled", command=pregled,bg="cyan")
+    button2.grid(row=13,column=2)
+
+    #kriram label
+    label2 = Label(novi_prozor1, text="Dijagnoza",bg="cyan").grid(row=14,column=2)
+    
+    #otvorit će se novi prozor s linkom za wikipediu
+    def napraviProzor(bolest):
+        global prozor
+        novi_prozor = Toplevel(prozor)
+        novi_prozor.title("Simptomi")
+        novi_prozor.configure(bg="cyan")
+            
+        labell = Label(novi_prozor, text="Imate " + bolest, bg="cyan").grid(row=1, column=1)
+        label2 = Label(novi_prozor, text=bolesti_i_odgovori[bolest], bg="cyan").grid(row=2, column=1)
+        label3 = Label(novi_prozor, text=wikipedija[bolest], bg="cyan").grid(row=3, column=1)
+
+
 
 # dohvatiti opis po bolesti
 button1 = Button(prozor, text="Potvrdi", command=potvrdi,bg="cyan")
 button1.pack()
 
-# napraviti mjesto gdje će ići opis
+# napraviti mjesto gdje će ići kratki opis
 label1 = Label(prozor, text="Kratki opis",bg="cyan").pack()
 entry1 = Entry(prozor, width = 50,bg="cyan")
 entry1.pack()
 
 prozor.mainloop()
+
+
+
 
 
